@@ -58,85 +58,26 @@
         }
 
         .logo {
-    display: flex;
-    align-items: center;
-    position: relative;
-}
+            display: flex;
+            align-items: center;
+        }
 
-.logo-img {
-    position: relative;
-    margin-right: 15px;
-    overflow: hidden;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(137, 196, 244, 0.3);
-}
+        .logo img {
+            height: 60px;
+            margin-right: 15px;
+        }
 
-.logo-img::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(45deg, 
-                             rgba(255, 155, 179, 0.4) 0%, 
-                             rgba(137, 196, 244, 0.6) 50%, 
-                             rgba(255, 255, 255, 0.8) 100%);
-    mix-blend-mode: overlay;
-    z-index: 1;
-    border-radius: 10px;
-}
+        .logo-text h1 {
+            color: #89c4f4; /* Azul bebê */
+            font-size: 24px;
+            text-align: center;
+        }
 
-.logo-img img {
-    height: 60px;
-    display: block;
-    position: relative;
-    z-index: 0;
-    transition: transform 0.5s ease;
-}
-
-.logo:hover .logo-img img {
-    transform: scale(1.05);
-}
-
-.logo-text h1 {
-    font-size: 24px;
-    background: linear-gradient(135deg, #ff9bb3, #89c4f4);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
-    letter-spacing: 1px;
-    margin-bottom: 5px;
-    transition: all 0.3s ease;
-}
-
-.logo:hover .logo-text h1 {
-    text-shadow: 2px 2px 6px rgba(0,0,0,0.15);
-}
-
-.logo-text p {
-    font-size: 12px;
-    color: #89c4f4;
-    font-weight: 500;
-    position: relative;
-    display: inline-block;
-}
-
-.logo-text p::after {
-    content: '';
-    position: absolute;
-    bottom: -3px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: linear-gradient(90deg, #ff9bb3, #89c4f4);
-    transition: width 0.3s ease;
-}
-
-.logo:hover .logo-text p::after {
-    width: 100%;
-}
+        .logo-text p {
+            font-size: 12px;
+            color: #dd0034; /* Rosa */
+            text-align: center;
+        }
 
         nav ul {
             display: flex;
@@ -163,28 +104,27 @@
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(255, 155, 179, 0.3), rgba(137, 196, 244, 0.3)), url('https://via.placeholder.com/1920x1080?text=Festa+Infantil');
-            background-size: cover;
-            background-position: center;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            text-align: center;
-            color: white;
-            padding-top: 80px;
-        }
+    display: flex;
+    align-items: center;      /* já estava */
+    justify-content: center;  /* ⬅️ novo */
+    background: linear-gradient(rgba(255,155,179,0.3), rgba(137,196,244,0.3)),
+                url('https://via.placeholder.com/1920x1080?text=Festa+Infantil') center/cover no-repeat;
+    height: 100vh;
+    padding-top: 80px;
+    text-align: center;
+    color: #f05353;
+}
 
-        .hero-content h2 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-        }
+.hero-content {
+    max-width: 800px;     /* largura máxima para não ficar esticado demais em PC */
+    width: 100%;          /* ocupa 100% do espaço disponível até o max-width */
+    margin: 0 auto;       /* centraliza horizontalmente */
+    display: flex;
+    flex-direction: column;
+    align-items: center;  /* centraliza títulos e botão internos */
+    gap: 20px;            /* espaçamento consistente entre h2, p e botão */
+}
 
-        .hero-content p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-        }
 
         /* Services Section */
         .services {
@@ -493,15 +433,153 @@
                 font-size: 25px;
             }
         }
+        .hero {
+    position: relative;
+    overflow: hidden;
+}
+
+.party-elements {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+/* Confetti */
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #f00;
+    opacity: 0;
+    animation: confetti-fall 5s linear infinite;
+}
+
+.confetti:nth-child(1) {
+    left: 10%;
+    background-color: #ff9bb3;
+    animation-delay: 0s;
+}
+
+.confetti:nth-child(2) {
+    left: 30%;
+    background-color: #89c4f4;
+    animation-delay: 1s;
+}
+
+.confetti:nth-child(3) {
+    left: 70%;
+    background-color: #fff;
+    animation-delay: 2s;
+}
+
+@keyframes confetti-fall {
+    0% {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Balloons */
+.balloon {
+    position: absolute;
+    width: 40px;
+    height: 50px;
+    border-radius: 50%;
+    animation: balloon-float 8s ease-in infinite;
+    opacity: 0.7;
+}
+
+.balloon:nth-child(4) {
+    left: 15%;
+    background-color: #ff9bb3;
+    animation-delay: 0s;
+}
+
+.balloon:nth-child(5) {
+    left: 50%;
+    background-color: #89c4f4;
+    animation-delay: 2s;
+}
+
+.balloon:nth-child(6) {
+    left: 80%;
+    background-color: #fff;
+    animation-delay: 4s;
+}
+
+@keyframes balloon-float {
+    0% {
+        transform: translateY(100vh) scale(0.5);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.7;
+    }
+    90% {
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(-100px) scale(1.2);
+        opacity: 0;
+    }
+}
+
+/* Stars */
+.star {
+    position: absolute;
+    color: gold;
+    font-size: 20px;
+    animation: star-twinkle 3s ease-in-out infinite;
+}
+
+.star:nth-child(7) {
+    top: 20%;
+    left: 20%;
+    animation-delay: 0s;
+}
+
+.star:nth-child(8) {
+    top: 40%;
+    left: 70%;
+    animation-delay: 1s;
+}
+
+.star:nth-child(9) {
+    top: 60%;
+    left: 40%;
+    animation-delay: 2s;
+}
+
+@keyframes star-twinkle {
+    0%, 100% {
+        opacity: 0.2;
+        transform: scale(0.8);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
     </style>
 </head>
 <body>
     <header>
         <div class="container">
             <div class="logo">
-                <div class="logo-img">
-                    <img src="logo.png" alt="Logo Festa Mágica">
-                </div>
+                <!-- Substitua pelo caminho da sua logo -->
+                <img src="https://via.placeholder.com/150x60?text=LOGO" alt="Logo Festa Mágica">
                 <div class="logo-text">
                     <h1>Festa Mágica</h1>
                     <p>Transformando sonhos em realidade</p>
@@ -522,13 +600,26 @@
         </div>
     </header>
 
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h2>Seu aniversário inesquecível começa aqui!</h2>
-            <p>Alugue decorações e brinquedos para tornar sua festa especial</p>
-            <a href="#produtos" class="btn">Ver Catálogo</a>
-        </div>
-    </section>
+   <section id="home" class="hero">
+    <!-- Elementos de festa animados -->
+    <div class="party-elements">
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+    </div>
+    
+    <div class="hero-content">
+        <h2>Seu aniversário inesquecível começa aqui!</h2>
+        <p>Alugue decorações e brinquedos para tornar sua festa especial</p>
+        <a href="#produtos" class="btn">Ver Catálogo</a>
+    </div>
+</section>
 
     <section id="servicos" class="services">
         <div class="container">
@@ -622,6 +713,15 @@
                         <a href="https://wa.me/5511999999999" target="_blank"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
+                <form class="contact-form">
+                    <input type="text" placeholder="Seu nome" required>
+                    <input type="email" placeholder="Seu e-mail" required>
+                    <input type="tel" placeholder="Seu telefone">
+                    <textarea placeholder="Sua mensagem" required></textarea>
+                    <button type="submit" class="btn">Enviar Mensagem</button>
+                </form>
+            </div>
+        </div>
     </section>
 
     <!-- Botão flutuante do WhatsApp -->
