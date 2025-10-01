@@ -1,884 +1,255 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Festa Mágica - Aluguel de Decoração e Brinquedos</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        /* Reset e Estilos Globais */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            line-height: 1.6;
-            color: #333;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-
-        .btn {
-            display: inline-block;
-            background: #ff9bb3; /* Rosa mais suave */
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .btn:hover {
-            background: #ff85a2;
-            transform: translateY(-3px);
-        }
-
-        /* Header */
-        header {
-            background: white;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            width: 100%;
-            z-index: 1000;
-        }
-
-        header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 0;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-        }
-
-        .logo img {
-            height: 60px;
-            margin-right: 15px;
-        }
-
-        .logo-text h1 {
-            color: #89c4f4; /* Azul bebê */
-            font-size: 24px;
-            text-align: center;
-        }
-
-        .logo-text p {
-            font-size: 12px;
-            color: #dd0034; /* Rosa */
-            text-align: center;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: #555;
-            padding: 10px 15px;
-            transition: color 0.3s;
-        }
-
-        nav ul li a:hover {
-            color: #ff9bb3; /* Rosa */
-        }
-
-        .mobile-menu {
-            display: none;
-            font-size: 24px;
-            cursor: pointer;
-            color: #89c4f4; /* Azul bebê */
-        }
-
-        /* Hero Section */
-        .hero {
-    display: flex;
-    align-items: center;      /* já estava */
-    justify-content: center;  /* ⬅️ novo */
-    background: linear-gradient(rgba(255,155,179,0.3), rgba(137,196,244,0.3)),
-                url('https://via.placeholder.com/1920x1080?text=Festa+Infantil') center/cover no-repeat;
-    height: 100vh;
-    padding-top: 80px;
-    text-align: center;
-    color: #f05353;
-}
-
-.hero-content {
-    max-width: 800px;     /* largura máxima para não ficar esticado demais em PC */
-    width: 100%;          /* ocupa 100% do espaço disponível até o max-width */
-    margin: 0 auto;       /* centraliza horizontalmente */
-    display: flex;
-    flex-direction: column;
-    align-items: center;  /* centraliza títulos e botão internos */
-    gap: 20px;            /* espaçamento consistente entre h2, p e botão */
-}
-
-
-        /* Services Section */
-        .services {
-            padding: 80px 0;
-            background: #f9f9f9;
-        }
-
-        .services h2, .products h2, .gallery h2, .contact h2 {
-            text-align: center;
-            margin-bottom: 50px;
-            font-size: 2.5rem;
-            color: #89c4f4; /* Azul bebê */
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .service-card {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-            border-top: 4px solid #ff9bb3; /* Rosa */
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .service-card i {
-            font-size: 3rem;
-            color: #89c4f4; /* Azul bebê */
-            margin-bottom: 20px;
-        }
-
-        .service-card h3 {
-            margin-bottom: 15px;
-            font-size: 1.5rem;
-            color: #555;
-        }
-
-        /* Products Section */
-        .products {
-            padding: 80px 0;
-            background: white;
-        }
-
-        .product-filters {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-        }
-
-        .filter-btn {
-            padding: 8px 20px;
-            margin: 5px;
-            background: #e0f0ff; /* Azul bebê claro */
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s;
-            color: #555;
-        }
-
-        .filter-btn.active, .filter-btn:hover {
-            background: #89c4f4; /* Azul bebê */
-            color: white;
-        }
-
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 25px;
-        }
-
-        .product-card {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-            border: 1px solid #ffe6eb; /* Rosa claro */
-        }
-
-        .product-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .product-img {
-            height: 200px;
-            overflow: hidden;
-        }
-
-        .product-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-
-        .product-card:hover .product-img img {
-            transform: scale(1.1);
-        }
-
-        .product-info {
-            padding: 20px;
-        }
-
-        .product-info h3 {
-            margin-bottom: 10px;
-            font-size: 1.2rem;
-            color: #555;
-        }
-
-        .product-info p {
-            color: #777;
-            margin-bottom: 15px;
-        }
-
-        .product-price {
-            font-weight: bold;
-            color: #ff9bb3; /* Rosa */
-            font-size: 1.2rem;
-            margin-bottom: 15px;
-            display: block;
-        }
-
-        /* Gallery Section */
-        .gallery {
-            padding: 80px 0;
-            background: #f9f9f9;
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .gallery-item {
-            height: 200px;
-            overflow: hidden;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            border: 3px solid white;
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.1);
-        }
-
-        /* Contact Section */
-        .contact {
-            padding: 80px 0;
-            background: white;
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 50px;
-        }
-
-        .contact-info {
-            background: linear-gradient(135deg, #89c4f4, #ff9bb3); /* Azul bebê para rosa */
-            padding: 30px;
-            border-radius: 10px;
-            color: white;
-        }
-
-        .contact-info h3 {
-            margin-bottom: 20px;
-            font-size: 1.5rem;
-        }
-
-        .contact-info p {
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-        }
-
-        .contact-info i {
-            margin-right: 10px;
-            font-size: 1.2rem;
-        }
-
-        .social-icons {
-            margin-top: 20px;
-        }
-
-        .social-icons a {
-            color: white;
-            font-size: 1.5rem;
-            margin-right: 15px;
-            transition: transform 0.3s;
-        }
-
-        .social-icons a:hover {
-            transform: translateY(-5px);
-        }
-
-        .contact-form input,
-        .contact-form textarea {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-
-        .contact-form textarea {
-            height: 150px;
-            resize: vertical;
-        }
-
-        /* Floating WhatsApp Button */
-        .whatsapp-float {
-            position: fixed;
-            width: 60px;
-            height: 60px;
-            bottom: 40px;
-            right: 40px;
-            background-color: #25d366;
-            color: #FFF;
-            border-radius: 50px;
-            text-align: center;
-            font-size: 30px;
-            box-shadow: 2px 2px 3px #999;
-            z-index: 100;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
-        }
-
-        .whatsapp-float:hover {
-            background-color: #128C7E;
-            transform: scale(1.1);
-        }
-
-        /* Footer */
-        footer {
-            background: linear-gradient(135deg, #89c4f4, #ff9bb3); /* Azul bebê para rosa */
-            color: white;
-            text-align: center;
-            padding: 20px 0;
-        }
-
-        /* Responsividade */
-        @media (max-width: 768px) {
-            nav ul {
-                display: none;
-                position: absolute;
-                top: 80px;
-                left: 0;
-                width: 100%;
-                background: white;
-                flex-direction: column;
-                align-items: center;
-                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-                padding: 20px 0;
-            }
-
-            nav ul.show {
-                display: flex;
-            }
-
-            nav ul li {
-                margin: 10px 0;
-            }
-
-            .mobile-menu {
-                display: block;
-            }
-
-            .hero-content h2 {
-                font-size: 2rem;
-            }
-
-            .hero-content p {
-                font-size: 1rem;
-            }
-
-            .logo img {
-                height: 50px;
-            }
-
-            .whatsapp-float {
-                width: 50px;
-                height: 50px;
-                bottom: 20px;
-                right: 20px;
-                font-size: 25px;
-            }
-        }
-        .hero {
-    position: relative;
-    overflow: hidden;
-}
-
-.party-elements {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    z-index: 1;
-}
-
-/* Confetti */
-.confetti {
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    background-color: #f00;
-    opacity: 0;
-    animation: confetti-fall 5s linear infinite;
-}
-
-.confetti:nth-child(1) {
-    left: 10%;
-    background-color: #ff9bb3;
-    animation-delay: 0s;
-}
-
-.confetti:nth-child(2) {
-    left: 30%;
-    background-color: #89c4f4;
-    animation-delay: 1s;
-}
-
-.confetti:nth-child(3) {
-    left: 70%;
-    background-color: #fff;
-    animation-delay: 2s;
-}
-
-@keyframes confetti-fall {
-    0% {
-        transform: translateY(-100px) rotate(0deg);
-        opacity: 1;
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Portfólio</title>
+
+<!-- Google Fonts: Poppins (geral) + Rubik (título descolado) -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Rubik:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+    :root{
+        --glass-bg: rgba(255, 255, 255, 0);
+        --glass-bg-hover: rgba(255, 255, 255, 0);
     }
-    100% {
-        transform: translateY(100vh) rotate(360deg);
-        opacity: 0;
+
+    *{box-sizing: border-box;}
+    html,body{
+        height:100%;
+        margin:0;
+        font-family:'Poppins',sans-serif;
+        background: linear-gradient(180deg,#071019 0%, #0b122000 100%);
+        color:#fff;
+        -webkit-font-smoothing:antialiased;
+        -moz-osx-font-smoothing:grayscale;
     }
-}
 
-/* Balloons */
-.balloon {
-    position: absolute;
-    width: 40px;
-    height: 50px;
-    border-radius: 50%;
-    animation: balloon-float 8s ease-in infinite;
-    opacity: 0.7;
-}
-
-.balloon:nth-child(4) {
-    left: 15%;
-    background-color: #ff9bb3;
-    animation-delay: 0s;
-}
-
-.balloon:nth-child(5) {
-    left: 50%;
-    background-color: #89c4f4;
-    animation-delay: 2s;
-}
-
-.balloon:nth-child(6) {
-    left: 80%;
-    background-color: #fff;
-    animation-delay: 4s;
-}
-
-@keyframes balloon-float {
-    0% {
-        transform: translateY(100vh) scale(0.5);
-        opacity: 0;
+    .section2 {
+        position: relative;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 40px 20px;
+        overflow: hidden;
+        text-align: center;
+        gap: 24px;
     }
-    10% {
-        opacity: 0.7;
+
+    /* Vídeo em background (se quiser full background mantenha como está) */
+    .section2 video{
+        position: absolute;
+        inset: 0;
+        width:100%;
+        height:100%;
+        object-fit:cover;
+        z-index:0;
+        filter: brightness(0.45) saturate(0.95);
     }
-    90% {
-        opacity: 0.7;
+
+    .content{
+        position: relative;
+        z-index:1;
+        margin-bottom: 20px;
+        animation: fadeInUp .6s ease both;
     }
-    100% {
-        transform: translateY(-100px) scale(1.2);
-        opacity: 0;
+
+    /* Título MAIOR, responsivo e com fonte "descolada" (Rubik) */
+    .content h2{
+        /* clamp(min, preferred, max) */
+        font-family: 'Rubik', sans-serif;
+        font-weight: 700;
+        font-size: clamp(2.8rem, 6.5vw, 5rem); /* responsivo: mínimo 2.8rem, ideal 6.5vw, máximo 5rem */
+        margin:0;
+        letter-spacing: -0.02em;
+        text-shadow: 0 6px 18px rgba(0,0,0,0.6);
+        line-height: 1;
     }
-}
 
-/* Stars */
-.star {
-    position: absolute;
-    color: gold;
-    font-size: 20px;
-    animation: star-twinkle 3s ease-in-out infinite;
-}
-
-.star:nth-child(7) {
-    top: 20%;
-    left: 20%;
-    animation-delay: 0s;
-}
-
-.star:nth-child(8) {
-    top: 40%;
-    left: 70%;
-    animation-delay: 1s;
-}
-
-.star:nth-child(9) {
-    top: 60%;
-    left: 40%;
-    animation-delay: 2s;
-}
-
-@keyframes star-twinkle {
-    0%, 100% {
-        opacity: 0.2;
-        transform: scale(0.8);
+    .content p{
+        margin-top:14px;
+        max-width:640px;
+        font-size: clamp(1rem, 1.4vw, 1.2rem);
+        color: #e9eef5;
     }
-    50% {
-        opacity: 1;
-        transform: scale(1.2);
-    }
-}
 
-.hero-content {
-    position: relative;
-    z-index: 2;
-}
-    </style>
+    /* Caixa glass */
+    .box {
+        position: relative;
+        z-index: 1;
+        background: var(--glass-bg);
+        -webkit-backdrop-filter: blur(12px);
+        backdrop-filter: blur(12px);
+        border-radius: 22px;
+        padding: 42px 28px;
+        max-width: 1000px;
+        width: 100%;
+        color: #fff;
+        box-shadow: 0 12px 34px rgba(3,8,15,0.6);
+        margin-bottom: 40px;
+        border: 1px solid rgba(255,255,255,0.12);
+        transition: transform .28s ease, box-shadow .28s ease, background .28s ease;
+        overflow: hidden;
+        animation: fadeInUp .6s ease both;
+    }
+
+    .box:hover{
+        transform: translateY(-8px);
+        box-shadow: 0 22px 60px rgba(2,5,10,0.7);
+        background: var(--glass-bg-hover);
+    }
+
+    .box h2{
+        font-size: clamp(1.5rem, 2.6vw, 2.7rem);
+        margin: 0 0 18px 0;
+        text-shadow: 1px 1px 8px rgba(0,0,0,0.5);
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .box p{
+        font-size: 1.05rem;
+        color:#f3f6fb;
+        line-height:1.7;
+        margin:0;
+    }
+
+    .box ul{ list-style:none; padding:0; margin:0; text-align:left; }
+    .box li{
+        margin-bottom:16px;
+        padding:18px;
+        border-left:5px solid rgba(255,255,255,0.15);
+        background: rgba(255,255,255,0.025);
+        border-radius:12px;
+        transition: transform .22s ease, box-shadow .22s ease;
+    }
+    .box li:hover{
+        transform: translateX(6px);
+        box-shadow: 0 8px 26px rgba(0,0,0,0.45);
+    }
+    .box li strong{ display:block; font-size:1.15rem; margin-bottom:6px; }
+    .box li span{ color:#dfe9f5; font-size:0.98rem; line-height:1.55; }
+
+    .gallery .grid{
+        display:grid;
+        grid-template-columns: repeat(3,1fr);
+        gap: 14px;
+        margin-top:14px;
+    }
+    .gallery .grid img{
+        width:100%;
+        height:220px;
+        object-fit:cover;
+        border-radius:16px;
+        transition: transform .28s ease, box-shadow .28s ease;
+        cursor:pointer;
+    }
+    .gallery .grid img:hover{
+        transform: scale(1.06);
+        box-shadow: 0 16px 34px rgba(0,0,0,0.55);
+    }
+
+    @media (max-width: 992px){
+        .gallery .grid{ grid-template-columns: repeat(2,1fr); }
+        .box{ padding: 36px 22px; }
+    }
+    @media (max-width: 600px){
+        .gallery .grid{ grid-template-columns: 1fr; }
+        .box{ padding: 28px 16px; border-radius:18px; margin-bottom:28px; }
+        .content{ margin-bottom: 18px; }
+        /* título fica grande mas responsivo pela clamp() */
+    }
+
+    @keyframes fadeInUp {
+        from{ opacity: 0; transform: translateY(10px); }
+        to{ opacity: 1; transform: translateY(0); }
+    }
+</style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="logo">
-                <!-- Substitua pelo caminho da sua logo -->
-                <img src="https://via.placeholder.com/150x60?text=LOGO" alt="Logo Festa Mágica">
-                <div class="logo-text">
-                    <h1>Festa Mágica</h1>
-                    <p>Transformando sonhos em realidade</p>
-                </div>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#servicos">Serviços</a></li>
-                    <li><a href="#produtos">Produtos</a></li>
-                    <li><a href="#galeria">Galeria</a></li>
-                    <li><a href="#contato">Contato</a></li>
-                </ul>
-            </nav>
-            <div class="mobile-menu">
-                <i class="fas fa-bars"></i>
-            </div>
-        </div>
-    </header>
 
-   <section id="home" class="hero">
-    <!-- Elementos de festa animados -->
-    <div class="party-elements">
-        <div class="confetti"></div>
-        <div class="confetti"></div>
-        <div class="confetti"></div>
-        <div class="balloon"></div>
-        <div class="balloon"></div>
-        <div class="balloon"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
+<section class="section2">
+    <!-- vídeo como background (aparece atrás das caixas) -->
+    <video autoplay muted loop playsinline>
+        <source src="video3.mp4" type="video/mp4">
+    </video>
+
+    <div class="content">
+        <h2>Portifolio</h2>
+        <p>Explore os projetos mais recentes e veja meu trabalho de perto.</p>
     </div>
-    
-    <div class="hero-content">
-        <h2>Seu aniversário inesquecível começa aqui!</h2>
-        <p>Alugue decorações e brinquedos para tornar sua festa especial</p>
-        <a href="#produtos" class="btn">Ver Catálogo</a>
+
+    <!-- resto das caixas (mantive igual ao seu exemplo) -->
+    <div class="box">
+        <h2>Sobre Mim</h2>
+        <p>Profissional proativa, criativa e com facilidade em aprender novas ferramentas. Experiência em atendimento ao cliente, criação de conteúdos visuais e desenvolvimento de projetos digitais. Organizada, comunicativa e focada em alcançar resultados com qualidade e eficiência.</p>
+    </div>
+
+    <div class="box education">
+        <h2>Educação & Certificados</h2>
+        <ul>
+            <li><strong>Técnico em Multimídia</strong><span> Produção e Design para Web<br>Criação e Produção de Animações<br> Produção e Design para Webgames</span></li>
+            <li><strong>Técnico em Publicidade</strong><span>Assistente de Atendimento e Planejamento Publicitário<br>Assistente de Criação e Produção Publicitária<br>Assistente de Mídia.</span></li>
+            <li><strong>Marketing com IA</strong><span>2025</span></li>
+        </ul>
+    </div>
+
+    <div class="box services">
+        <h2>Meus Serviços</h2>
+        <ul>
+            <li><strong>Técnico em Multimídia</strong><span>Desenvolvimento responsivo e otimizado.</span></li>
+            <li><strong>Design de Interfaces (UI/UX)</strong><span>Foco em usabilidade e estética.</span></li>
+            <li><strong>Identidade Visual & Branding</strong><span>Logos, cores e tipografia que comunicam.</span></li>
+            <li><strong>Marketing Digital</strong><span>Artes e campanhas para redes sociais.</span></li>
+        </ul>
+    </div>
+
+    <!-- Pacotes (atualizado) -->
+<div class="box packages">
+    <h2>✨ Pacotes Disponíveis ✨</h2>
+    <ul>
+        <li>
+            <strong>Pacote Completo</strong>
+            <span>Inclui logotipo, paleta de cores, tipografia e aplicações em materiais diversos.</span>
+            <div style="margin-top:8px; font-weight:700;">Preço: R$ 639,90</div>
+        </li>
+
+        <li>
+            <strong>Pacote Site — Vitrine Virtual</strong>
+            <span>Design de site (vitrine) de até 5 páginas + configuração de domínio.</span>
+            <div style="margin-top:8px; font-weight:700;">Preço: A partir de US$ 1.000,00</div>
+        </li>
+
+        <li>
+            <strong>Criação de Logotipo</strong>
+            <span>Desenvolvimento de logotipo profissional com variações (horizontal, vertical, símbolo).</span>
+            <div style="margin-top:8px; font-weight:700;">Preço: R$ 400,00</div>
+        </li>
+
+        <li>
+            <strong>Social Media</strong>
+            <span>Pacote de criação de artes e publicações para redes sociais (posts estáticos).</span>
+            <div style="margin-top:8px; font-weight:700;">Preço: R$ 1.200,00</div>
+        </li>
+    </ul>
+</div>
+
+
+    <div class="box gallery">
+        <h2>Meus projetos</h2>
+        <div class="grid">
+            <img src="pro1.png" alt="Projeto 1">
+            <img src="pro2.png" alt="Projeto 2">
+            <img src="pro3.jpeg" alt="Projeto 3">
+            <img src="pro4.png" alt="Projeto 4">
+            <img src="pro5.png" alt="Projeto 5">
+            <img src="pro6.png" alt="Projeto 6">
+            <img src="pro7.jpeg" alt="Projeto 7">
+            <img src="pro8.png" alt="Projeto 8">
+            <img src="pro9.jpeg" alt="Projeto 9">
+        </div>
     </div>
 </section>
 
-    <section id="servicos" class="services">
-        <div class="container">
-            <h2>Nossos Serviços</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <i class="fas fa-birthday-cake"></i>
-                    <h3>Decoração Completa</h3>
-                    <p>Temas personalizados para todas as idades</p>
-                </div>
-                <div class="service-card">
-                    <i class="fas fa-gamepad"></i>
-                    <h3>Brinquedos</h3>
-                    <p>Piscina de bolinhas, cama elástica e muito mais</p>
-                </div>
-                <div class="service-card">
-                    <i class="fas fa-truck"></i>
-                    <h3>Entrega e Montagem</h3>
-                    <p>Instalamos tudo no local da festa</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="produtos" class="products">
-        <div class="container">
-            <h2>Nossos Produtos</h2>
-            <div class="product-filters">
-                <button class="filter-btn active" data-filter="all">Todos</button>
-                <button class="filter-btn" data-filter="decoracao">Decoração</button>
-                <button class="filter-btn" data-filter="brinquedos">Brinquedos</button>
-                <button class="filter-btn" data-filter="kits">Kits Completos</button>
-            </div>
-            <div class="products-grid">
-                <!-- Produtos serão carregados via JavaScript -->
-            </div>
-        </div>
-    </section>
-
-    <section id="galeria" class="gallery">
-        <div class="container">
-            <h2>Galeria de Festas</h2>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <a href="festa.jpg" target="_blank">
-                        <img src="festa.jpg" alt="Festa 1">
-                    </a>
-                </div>
-                <div class="gallery-item">
-                    <a href="festa2.jpg" target="_blank">
-                        <img src="festa2.jpg" alt="Festa 2">
-                    </a>
-                </div>
-                <div class="gallery-item">
-                    <a href="festa3.jpg" target="_blank">
-                        <img src="festa3.jpg" alt="Festa 3">
-                    </a>
-                </div>
-                <div class="gallery-item">
-                    <a href="festa4.jpg" target="_blank">
-                        <img src="festa4.jpg" alt="Festa 4">
-                    </a>
-                </div>
-                <div class="gallery-item">
-                    <a href="festa5.jpg" target="_blank">
-                        <img src="festa5.jpg" alt="Festa 5">
-                    </a>
-                </div>
-                <div class="gallery-item">
-                    <a href="festa6.jpg" target="_blank">
-                        <img src="festa6.jpg" alt="Festa 6">
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-
-    <section id="contato" class="contact">
-        <div class="container">
-            <h2>Entre em Contato</h2>
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <h3>Informações</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> Rua das Festas, 123 - Centro</p>
-                    <p><i class="fas fa-phone"></i> (11) 1234-5678</p>
-                    <p><i class="fas fa-envelope"></i> contato@festamagica.com</p>
-                    <div class="social-icons">
-                        <a href="https://facebook.com/suaempresa" target="_blank"><i class="fab fa-facebook"></i></a>
-                        <a href="https://instagram.com/suaempresa" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="https://wa.me/5511999999999" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                    </div>
-                </div>
-                <form class="contact-form">
-                    <input type="text" placeholder="Seu nome" required>
-                    <input type="email" placeholder="Seu e-mail" required>
-                    <input type="tel" placeholder="Seu telefone">
-                    <textarea placeholder="Sua mensagem" required></textarea>
-                    <button type="submit" class="btn">Enviar Mensagem</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Botão flutuante do WhatsApp -->
-    <a href="https://wa.me/5511999999999" class="whatsapp-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2023 Festa Mágica - Todos os direitos reservados</p>
-        </div>
-    </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Mobile menu toggle
-            const mobileMenuBtn = document.querySelector('.mobile-menu');
-            const navMenu = document.querySelector('nav ul');
-            
-            mobileMenuBtn.addEventListener('click', function() {
-                navMenu.classList.toggle('show');
-            });
-
-            // Smooth scrolling for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-                    
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                        
-                        // Close mobile menu if open
-                        if (navMenu.classList.contains('show')) {
-                            navMenu.classList.remove('show');
-                        }
-                    }
-                });
-            });
-
-            // Product filtering
-            const filterButtons = document.querySelectorAll('.filter-btn');
-            const productsGrid = document.querySelector('.products-grid');
-            
-            // Sample products data
-            const products = [
-                {
-                    id: 1,
-                    name: 'Kit Frozen',
-                    category: 'kits',
-                    description: 'Kit completo com decoração temática Frozen',
-                    price: 'R$ 299,90',
-                    image: 'frozen.jpg'
-                },
-                {
-                    id: 2,
-                    name: 'Piscina de Bolinhas',
-                    category: 'brinquedos',
-                    description: 'Piscina de bolinhas com 2m x 2m',
-                    price: 'R$ 149,90',
-                    image: 'bolinha.jpg'
-                },
-                {
-                    id: 3,
-                    name: 'Balões Personalizados',
-                    category: 'decoracao',
-                    description: 'Conjunto com 50 balões temáticos',
-                    price: 'R$ 89,90',
-                    image: 'Balao.jpg'
-                },
-                {
-                    id: 4,
-                    name: 'Cama Elástica',
-                    category: 'brinquedos',
-                    description: 'Cama elástica 3m x 3m com rede de proteção',
-                    price: 'R$ 199,90',
-                    image: 'cama.jpg'
-                },
-                {
-                    id: 5,
-                    name: 'Kit Super Heróis',
-                    category: 'kits',
-                    description: 'Kit completo com decoração de super heróis',
-                    price: 'R$ 349,90',
-                    image: 'Heroi.jpg'
-                },
-                {
-                    id: 6,
-                    name: 'Painel Fotográfico',
-                    category: 'decoracao',
-                    description: 'Painel personalizado para fotos 2m x 2m',
-                    price: 'R$ 129,90',
-                    image: 'painel.jpg'
-                }
-            ];
-
-            // Display all products initially
-            displayProducts(products);
-
-            // Filter products
-            filterButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    // Remove active class from all buttons
-                    filterButtons.forEach(btn => btn.classList.remove('active'));
-                    // Add active class to clicked button
-                    this.classList.add('active');
-                    
-                    const filter = this.dataset.filter;
-                    
-                    if (filter === 'all') {
-                        displayProducts(products);
-                    } else {
-                        const filteredProducts = products.filter(product => product.category === filter);
-                        displayProducts(filteredProducts);
-                    }
-                });
-            });
-
-            // Function to display products
-            function displayProducts(productsToDisplay) {
-                productsGrid.innerHTML = '';
-                
-                productsToDisplay.forEach(product => {
-                    const productCard = document.createElement('div');
-                    productCard.className = 'product-card';
-                    productCard.innerHTML = `
-                        <div class="product-img">
-                            <img src="${product.image}" alt="${product.name}">
-                        </div>
-                        <div class="product-info">
-                            <h3>${product.name}</h3>
-                            <p>${product.description}</p>
-                            <span class="product-price">${product.price}</span>
-                            <a href="#contato" class="btn">Alugar Agora</a>
-                        </div>
-                    `;
-                    
-                    productsGrid.appendChild(productCard);
-                });
-            }
-
-            // Form submission
-            const contactForm = document.querySelector('.contact-form');
-            
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // Here you would typically send the form data to a server
-                alert('Obrigado pelo seu contato! Entraremos em breve em contato.');
-                this.reset();
-            });
-        });
-    </script>
 </body>
 </html>
