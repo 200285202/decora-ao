@@ -4,14 +4,15 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Portfólio</title>
-
-<!-- Google Fonts: Poppins (geral) + Rubik (título descolado) -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Rubik:wght@500;700&display=swap" rel="stylesheet">
+<!-- Google Fonts: Poppins (geral) + Baloo 2 (título estilo balão) -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Baloo+2:wght@600;700&display=swap" rel="stylesheet">
 
 <style>
     :root{
         --glass-bg: rgba(255, 255, 255, 0);
         --glass-bg-hover: rgba(255, 255, 255, 0);
+        --icon-bg: rgba(255,255,255,0.06);
+        --icon-bg-hover: rgba(255,255,255,0.12);
     }
 
     *{box-sizing: border-box;}
@@ -34,10 +35,10 @@
         padding: 40px 20px;
         overflow: hidden;
         text-align: center;
-        gap: 24px;
+        gap: 20px;
     }
 
-    /* Vídeo em background (se quiser full background mantenha como está) */
+    /* Vídeo (background) */
     .section2 video{
         position: absolute;
         inset: 0;
@@ -51,28 +52,57 @@
     .content{
         position: relative;
         z-index:1;
-        margin-bottom: 20px;
+        margin-bottom: 6px;
         animation: fadeInUp .6s ease both;
     }
 
-    /* Título MAIOR, responsivo e com fonte "descolada" (Rubik) */
-    .content h2{
-        /* clamp(min, preferred, max) */
-        font-family: 'Rubik', sans-serif;
-        font-weight: 700;
-        font-size: clamp(2.8rem, 6.5vw, 5rem); /* responsivo: mínimo 2.8rem, ideal 6.5vw, máximo 5rem */
-        margin:0;
-        letter-spacing: -0.02em;
-        text-shadow: 0 6px 18px rgba(0,0,0,0.6);
-        line-height: 1;
+    
+    /* Título estilo balão responsivo */
+.content h2{
+    font-family: 'Baloo 2', cursive;
+    font-weight: 700;
+    /* clamp(min, ideal, max) */
+    font-size: clamp(2rem, 8vw, 6rem); 
+    margin:0;
+    letter-spacing:-0.02em;
+    text-shadow: 0 6px 18px rgba(0,0,0,0.6);
+    line-height:1;
+}
+
+
+
+    .content p{ margin-top:10px; max-width:640px; font-size: clamp(1rem, 1.4vw, 1.2rem); color:#e9eef5; }
+
+    /* Social icons row (coloquei logo abaixo do título) */
+    .social {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 6px;
     }
 
-    .content p{
-        margin-top:14px;
-        max-width:640px;
-        font-size: clamp(1rem, 1.4vw, 1.2rem);
-        color: #e9eef5;
+    .social a{
+        display: inline-grid;
+        place-items: center;
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        background: var(--icon-bg);
+        border: 1px solid rgba(255,255,255,0.08);
+        transition: transform .22s ease, background .22s ease, box-shadow .22s ease;
+        text-decoration: none;
     }
+
+    .social a:hover{
+        transform: translateY(-6px);
+        background: var(--icon-bg-hover);
+        box-shadow: 0 10px 28px rgba(0,0,0,0.45);
+    }
+
+    .social svg{ width:22px; height:22px; fill: #ffffff; display:block; }
 
     /* Caixa glass */
     .box {
@@ -93,83 +123,30 @@
         overflow: hidden;
         animation: fadeInUp .6s ease both;
     }
-
-    .box:hover{
-        transform: translateY(-8px);
-        box-shadow: 0 22px 60px rgba(2,5,10,0.7);
-        background: var(--glass-bg-hover);
-    }
-
-    .box h2{
-        font-size: clamp(1.5rem, 2.6vw, 2.7rem);
-        margin: 0 0 18px 0;
-        text-shadow: 1px 1px 8px rgba(0,0,0,0.5);
-        font-family: 'Poppins', sans-serif;
-    }
-
-    .box p{
-        font-size: 1.05rem;
-        color:#f3f6fb;
-        line-height:1.7;
-        margin:0;
-    }
+    .box:hover{ transform: translateY(-8px); box-shadow: 0 22px 60px rgba(2,5,10,0.7); background: var(--glass-bg-hover); }
+    .box h2{ font-size: clamp(1.5rem, 2.6vw, 2.7rem); margin: 0 0 18px 0; text-shadow: 1px 1px 8px rgba(0,0,0,0.5); font-family: 'Poppins', sans-serif; }
+    .box p{ font-size: 1.05rem; color:#f3f6fb; line-height:1.7; margin:0; }
 
     .box ul{ list-style:none; padding:0; margin:0; text-align:left; }
-    .box li{
-        margin-bottom:16px;
-        padding:18px;
-        border-left:5px solid rgba(255,255,255,0.15);
-        background: rgba(255,255,255,0.025);
-        border-radius:12px;
-        transition: transform .22s ease, box-shadow .22s ease;
-    }
-    .box li:hover{
-        transform: translateX(6px);
-        box-shadow: 0 8px 26px rgba(0,0,0,0.45);
-    }
+    .box li{ margin-bottom:16px; padding:18px; border-left:5px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.025); border-radius:12px; transition: transform .22s ease, box-shadow .22s ease; }
+    .box li:hover{ transform: translateX(6px); box-shadow: 0 8px 26px rgba(0,0,0,0.45); }
     .box li strong{ display:block; font-size:1.15rem; margin-bottom:6px; }
     .box li span{ color:#dfe9f5; font-size:0.98rem; line-height:1.55; }
 
-    .gallery .grid{
-        display:grid;
-        grid-template-columns: repeat(3,1fr);
-        gap: 14px;
-        margin-top:14px;
-    }
-    .gallery .grid img{
-        width:100%;
-        height:220px;
-        object-fit:cover;
-        border-radius:16px;
-        transition: transform .28s ease, box-shadow .28s ease;
-        cursor:pointer;
-    }
-    .gallery .grid img:hover{
-        transform: scale(1.06);
-        box-shadow: 0 16px 34px rgba(0,0,0,0.55);
-    }
+    .gallery .grid{ display:grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-top:14px; }
+    .gallery .grid img{ width:100%; height:220px; object-fit:cover; border-radius:16px; transition: transform .28s ease, box-shadow .28s ease; cursor:pointer; }
+    .gallery .grid img:hover{ transform: scale(1.06); box-shadow: 0 16px 34px rgba(0,0,0,0.55); }
 
-    @media (max-width: 992px){
-        .gallery .grid{ grid-template-columns: repeat(2,1fr); }
-        .box{ padding: 36px 22px; }
-    }
-    @media (max-width: 600px){
-        .gallery .grid{ grid-template-columns: 1fr; }
-        .box{ padding: 28px 16px; border-radius:18px; margin-bottom:28px; }
-        .content{ margin-bottom: 18px; }
-        /* título fica grande mas responsivo pela clamp() */
-    }
+    @media (max-width: 992px){ .gallery .grid{ grid-template-columns: repeat(2,1fr); } .box{ padding: 36px 22px; } }
+    @media (max-width: 600px){ .gallery .grid{ grid-template-columns: 1fr; } .box{ padding: 28px 16px; border-radius:18px; margin-bottom:28px; } .content{ margin-bottom: 18px; } }
 
-    @keyframes fadeInUp {
-        from{ opacity: 0; transform: translateY(10px); }
-        to{ opacity: 1; transform: translateY(0); }
-    }
+    @keyframes fadeInUp { from{ opacity: 0; transform: translateY(10px); } to{ opacity: 1; transform: translateY(0); } }
 </style>
 </head>
 <body>
 
 <section class="section2">
-    <!-- vídeo como background (aparece atrás das caixas) -->
+    <!-- Vídeo como background -->
     <video autoplay muted loop playsinline>
         <source src="video3.mp4" type="video/mp4">
     </video>
@@ -177,6 +154,37 @@
     <div class="content">
         <h2>Portifolio</h2>
         <p>Explore os projetos mais recentes e veja meu trabalho de perto.</p>
+    </div>
+
+    <!-- Social icons: substitua os hrefs pelos seus perfis -->
+    <div class="social" aria-label="Redes sociais">
+        <!-- WhatsApp -->
+        <a href="https://wa.me/5511948572007?text=Olá%20gostaria%20de%20informações" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M20.52 3.48A11.85 11.85 0 0 0 12 .5C6.21.5 1.5 5.21 1.5 11c0 1.94.51 3.74 1.4 5.32L.5 22l5.32-2.37A10.45 10.45 0 0 0 12 21.5c5.79 0 10.5-4.71 10.5-10.5 0-2.83-1.1-5.49-3.98-7.52zM12 19.5c-1.28 0-2.53-.33-3.62-.96l-.26-.16-3.15 1.4.67-2.33-.17-.27A7.25 7.25 0 0 1 4.75 11c0-3.76 3.02-6.82 6.75-6.82S18.25 7.24 18.25 11 15.03 19.5 12 19.5zM15.7 13.9c-.25-.12-1.49-.73-1.72-.81-.23-.08-.4-.12-.57.12s-.65.81-.8.98c-.15.16-.31.18-.57.06-.25-.12-1.05-.39-2-1.24-.74-.66-1.24-1.48-1.39-1.74-.15-.26-.02-.4.11-.52.12-.12.25-.31.37-.47.12-.16.16-.26.25-.42.08-.16.04-.3-.02-.42-.06-.12-.57-1.38-.78-1.89-.21-.5-.43-.43-.59-.44-.15-.01-.32-.01-.49-.01s-.42.06-.64.3c-.22.24-.85.83-.85 2.03s.87 2.36.99 2.52c.12.16 1.71 2.63 4.15 3.69 1.84.73 2.57.79 3.49.67.55-.07 1.71-.7 1.95-1.37.24-.67.24-1.24.17-1.37-.07-.13-.24-.19-.49-.31z"/>
+            </svg>
+        </a>
+
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/laylawebdesign?igsh=djNnZHFuazVobDMy" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm10 1.5a1 1 0 1 1 0 2 1 1 0 0 1 0-2zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/>
+            </svg>
+        </a>
+
+        <!-- Facebook -->
+        <a href="https://facebook.com/seuusuario" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2.2V12h2.2V9.8c0-2.2 1.3-3.4 3.3-3.4.96 0 1.96.17 1.96.17v2.15h-1.1c-1.1 0-1.44.68-1.44 1.38V12h2.46l-.39 2.9h-2.07v7A10 10 0 0 0 22 12z"/>
+            </svg>
+        </a>
+
+        <!-- LinkedIn -->
+        <a href="http://www.linkedin.com/in/layla-dantas-478282273" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M20.45 20.45h-3.6V14.8c0-1.35-.03-3.09-1.88-3.09-1.88 0-2.17 1.47-2.17 2.99v6.75h-3.6V9h3.45v1.56h.05c.48-.9 1.66-1.85 3.42-1.85 3.66 0 4.33 2.41 4.33 5.55v6.69zM5.34 7.43a2.09 2.09 0 1 1 0-4.18 2.09 2.09 0 0 1 0 4.18zM7.14 20.45H3.54V9h3.6v11.45z"/>
+            </svg>
+        </a>
     </div>
 
     <!-- resto das caixas (mantive igual ao seu exemplo) -->
@@ -205,35 +213,34 @@
     </div>
 
     <!-- Pacotes (atualizado) -->
-<div class="box packages">
-    <h2>✨ Pacotes Disponíveis ✨</h2>
-    <ul>
-        <li>
-            <strong>Pacote Completo</strong>
-            <span>Inclui logotipo, paleta de cores, tipografia e aplicações em materiais diversos.</span>
-            <div style="margin-top:8px; font-weight:700;">Preço: R$ 639,90</div>
-        </li>
+    <div class="box packages">
+        <h2>✨ Pacotes Disponíveis ✨</h2>
+        <ul>
+            <li>
+                <strong>Pacote Completo</strong>
+                <span>Inclui logotipo, paleta de cores, tipografia e aplicações em materiais diversos.</span>
+                <div style="margin-top:8px; font-weight:700;">Preço: R$ 639,90</div>
+            </li>
 
-        <li>
-            <strong>Pacote Site — Vitrine Virtual</strong>
-            <span>Design de site (vitrine) de até 5 páginas + configuração de domínio.</span>
-            <div style="margin-top:8px; font-weight:700;">Preço: A partir de US$ 1.000,00</div>
-        </li>
+            <li>
+                <strong>Pacote Site — Vitrine Virtual</strong>
+                <span>Design de site (vitrine) de até 5 páginas + configuração de domínio.</span>
+                <div style="margin-top:8px; font-weight:700;">Preço: A partir de US$ 1.000,00</div>
+            </li>
 
-        <li>
-            <strong>Criação de Logotipo</strong>
-            <span>Desenvolvimento de logotipo profissional com variações (horizontal, vertical, símbolo).</span>
-            <div style="margin-top:8px; font-weight:700;">Preço: R$ 400,00</div>
-        </li>
+            <li>
+                <strong>Criação de Logotipo</strong>
+                <span>Desenvolvimento de logotipo profissional com variações (horizontal, vertical, símbolo).</span>
+                <div style="margin-top:8px; font-weight:700;">Preço: R$ 400,00</div>
+            </li>
 
-        <li>
-            <strong>Social Media</strong>
-            <span>Pacote de criação de artes e publicações para redes sociais (posts estáticos).</span>
-            <div style="margin-top:8px; font-weight:700;">Preço: R$ 1.200,00</div>
-        </li>
-    </ul>
-</div>
-
+            <li>
+                <strong>Social Media</strong>
+                <span>Pacote de criação de artes e publicações para redes sociais (posts estáticos).</span>
+                <div style="margin-top:8px; font-weight:700;">Preço: R$ 1.200,00</div>
+            </li>
+        </ul>
+    </div>
 
     <div class="box gallery">
         <h2>Meus projetos</h2>
@@ -249,6 +256,7 @@
             <img src="pro9.jpeg" alt="Projeto 9">
         </div>
     </div>
+
 </section>
 
 </body>
