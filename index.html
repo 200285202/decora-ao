@@ -149,11 +149,37 @@
         height: 180px;
     }
 }
-/* Remove bolinhas de listas */
+/* Listas sem bolinhas e organizadas como cards */
 ul {
     list-style: none;
-    padding-left: 0;
+    padding: 0;
     margin: 0;
+}
+
+li {
+    background: rgba(255,255,255,0.05); /* leve fundo para destacar */
+    padding: 12px 16px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    transition: all 0.2s ease;
+}
+
+li:hover {
+    background: rgba(255,255,255,0.12); /* efeito hover */
+}
+
+li strong {
+    display: block;
+    font-size: 1.1rem;
+    color: #fff;
+    margin-bottom: 4px;
+}
+
+li span {
+    display: block;
+    color: #ddd;
+    font-size: 0.95rem;
+    line-height: 1.5;
 }
 
 </style>
