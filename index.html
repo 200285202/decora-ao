@@ -39,108 +39,116 @@
     }
 
     /* Vídeo (background) */
-    .section2 video{
-        position: absolute;
-        inset: 0;
-        width:100%;
-        height:100%;
-        object-fit:cover;
-        z-index:0;
-        filter: brightness(0.45) saturate(0.95);
-    }
-
-    .content{
-        position: relative;
-        z-index:1;
-        margin-bottom: 6px;
-        animation: fadeInUp .6s ease both;
-    }
-
-    
-    /* Título estilo balão responsivo */
-.content h2{
-    font-family: 'Baloo 2', cursive;
-    font-weight: 700;
-    /* clamp(min, ideal, max) */
-    font-size: clamp(2rem, 8vw, 6rem); 
-    margin:0;
-    letter-spacing:-0.02em;
-    text-shadow: 0 6px 18px rgba(0,0,0,0.6);
-    line-height:1;
+    /* Vídeo de fundo */
+.section2 video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    filter: brightness(0.45) saturate(0.95) contrast(1.2);
 }
 
+/* Conteúdo principal */
+.content {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 20px;
+    text-align: center;
+}
 
+/* Título estilo balão responsivo */
+.content h2 {
+    font-family: 'Baloo 2', cursive;
+    font-weight: 700;
+    font-size: clamp(2rem, 8vw, 6rem); /* cresce no PC e reduz no celular */
+    margin: 0;
+    letter-spacing: -0.02em;
+    text-shadow: 0 6px 18px rgba(0,0,0,0.6);
+    line-height: 1;
+}
 
-    .content p{ margin-top:10px; max-width:640px; font-size: clamp(1rem, 1.4vw, 1.2rem); color:#e9eef5; }
+/* Parágrafo */
+.content p {
+    font-size: clamp(1rem, 1.4vw, 1.2rem);
+    max-width: 640px;
+    margin: 10px auto 0 auto;
+    color: #e9eef5;
+}
 
-    /* Social icons row (coloquei logo abaixo do título) */
-    .social {
-        position: relative;
-        z-index: 2;
-        display: flex;
-        gap: 12px;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 6px;
-    }
+/* Social Icons responsivos */
+.social {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin: 10px 0 20px 0;
+}
 
-    .social a{
-        display: inline-grid;
-        place-items: center;
-        width: 46px;
-        height: 46px;
-        border-radius: 50%;
-        background: var(--icon-bg);
-        border: 1px solid rgba(255,255,255,0.08);
-        transition: transform .22s ease, background .22s ease, box-shadow .22s ease;
-        text-decoration: none;
-    }
+.social a {
+    width: clamp(36px, 4vw, 46px);
+    height: clamp(36px, 4vw, 46px);
+}
 
-    .social a:hover{
-        transform: translateY(-6px);
-        background: var(--icon-bg-hover);
-        box-shadow: 0 10px 28px rgba(0,0,0,0.45);
-    }
+/* Caixa glass adaptativa */
+.box {
+    position: relative;
+    z-index: 1;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(12px);
+    border-radius: 22px;
+    padding: clamp(20px, 3vw, 42px);
+    max-width: 1000px;
+    width: 90%;
+    margin: 20px auto;
+    box-shadow: 0 12px 34px rgba(3,8,15,0.6);
+    transition: all 0.28s ease;
+}
 
-    .social svg{ width:22px; height:22px; fill: #ffffff; display:block; }
+.box h2 {
+    font-size: clamp(1.5rem, 2.6vw, 2.7rem);
+    margin-bottom: 18px;
+}
 
-    /* Caixa glass */
+.box p {
+    font-size: clamp(0.9rem, 1.4vw, 1.05rem);
+    line-height: 1.7;
+}
+
+/* Gallery responsivo */
+.gallery .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+    margin-top: 14px;
+}
+
+.gallery .grid img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 16px;
+    transition: transform 0.28s ease, box-shadow 0.28s ease;
+}
+
+.gallery .grid img:hover {
+    transform: scale(1.06);
+    box-shadow: 0 16px 34px rgba(0,0,0,0.55);
+}
+
+/* Media queries extras */
+@media (max-width: 600px) {
     .box {
-        position: relative;
-        z-index: 1;
-        background: var(--glass-bg);
-        -webkit-backdrop-filter: blur(12px);
-        backdrop-filter: blur(12px);
-        border-radius: 22px;
-        padding: 42px 28px;
-        max-width: 1000px;
-        width: 100%;
-        color: #fff;
-        box-shadow: 0 12px 34px rgba(3,8,15,0.6);
-        margin-bottom: 40px;
-        border: 1px solid rgba(255,255,255,0.12);
-        transition: transform .28s ease, box-shadow .28s ease, background .28s ease;
-        overflow: hidden;
-        animation: fadeInUp .6s ease both;
+        padding: 18px;
+        border-radius: 18px;
     }
-    .box:hover{ transform: translateY(-8px); box-shadow: 0 22px 60px rgba(2,5,10,0.7); background: var(--glass-bg-hover); }
-    .box h2{ font-size: clamp(1.5rem, 2.6vw, 2.7rem); margin: 0 0 18px 0; text-shadow: 1px 1px 8px rgba(0,0,0,0.5); font-family: 'Poppins', sans-serif; }
-    .box p{ font-size: 1.05rem; color:#f3f6fb; line-height:1.7; margin:0; }
-
-    .box ul{ list-style:none; padding:0; margin:0; text-align:left; }
-    .box li{ margin-bottom:16px; padding:18px; border-left:5px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.025); border-radius:12px; transition: transform .22s ease, box-shadow .22s ease; }
-    .box li:hover{ transform: translateX(6px); box-shadow: 0 8px 26px rgba(0,0,0,0.45); }
-    .box li strong{ display:block; font-size:1.15rem; margin-bottom:6px; }
-    .box li span{ color:#dfe9f5; font-size:0.98rem; line-height:1.55; }
-
-    .gallery .grid{ display:grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-top:14px; }
-    .gallery .grid img{ width:100%; height:220px; object-fit:cover; border-radius:16px; transition: transform .28s ease, box-shadow .28s ease; cursor:pointer; }
-    .gallery .grid img:hover{ transform: scale(1.06); box-shadow: 0 16px 34px rgba(0,0,0,0.55); }
-
-    @media (max-width: 992px){ .gallery .grid{ grid-template-columns: repeat(2,1fr); } .box{ padding: 36px 22px; } }
-    @media (max-width: 600px){ .gallery .grid{ grid-template-columns: 1fr; } .box{ padding: 28px 16px; border-radius:18px; margin-bottom:28px; } .content{ margin-bottom: 18px; } }
-
-    @keyframes fadeInUp { from{ opacity: 0; transform: translateY(10px); } to{ opacity: 1; transform: translateY(0); } }
+    .content h2 {
+        font-size: clamp(1.5rem, 10vw, 3rem);
+    }
+    .gallery .grid img {
+        height: 180px;
+    }
+}
 </style>
 </head>
 <body>
@@ -148,7 +156,7 @@
 <section class="section2">
     <!-- Vídeo como background -->
     <video autoplay muted loop playsinline>
-        <source src="video3.mp4" type="video/mp4">
+        <source src="video5.mp4" type="video/mp4">
     </video>
 
     <div class="content">
